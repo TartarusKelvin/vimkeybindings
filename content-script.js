@@ -4,14 +4,12 @@ const SCROLL_LINE_COUNT = 1;
 const SCROLL_HORIZONTAL_PIXELS = 5;
 
 const actions = [
-  { keyCombination: 'h', command: 'cmd_scrollLeft' },
   { keyCombination: 'j', command: 'cmd_scrollLineDown' },
   { keyCombination: 'k', command: 'cmd_scrollLineUp' },
-  { keyCombination: 'l', command: 'cmd_scrollRight' },
   { keyCombination: 'G', command: 'cmd_scrollFileBottom' },
   { keyCombination: 'gg', command: 'cmd_scrollFileTop' },
-  { keyCombination: 'gt', command: 'cmd_activateNextTab' },
-  { keyCombination: 'gT', command: 'cmd_activatePreviousTab' },
+  { keyCombination: 'l', command: 'cmd_activateNextTab' },
+  { keyCombination: 'h', command: 'cmd_activatePreviousTab' },
   /*
   {keyCombination: 'H', command: 'cmd_scrollScreenTop'},
   {keyCombination: 'M', command: 'cmd_scrollScreenMiddle'},
@@ -58,6 +56,7 @@ const commands = {
   cmd_activatePreviousTab: function (repetition) {
     browser.runtime.sendMessage({
       message: {
+        to: 'background',
         command: 'activatePreviousTab',
         repetition,
       }
